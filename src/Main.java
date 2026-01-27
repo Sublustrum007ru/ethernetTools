@@ -1,7 +1,9 @@
-import view.Application; 
-public class Main{ 
-    public static void main(String[] args){ 
-        Application app = new Application(); 
-        app.run(); 
-    } 
+import view.Application;
+
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        new Application();
+    }
 } 
