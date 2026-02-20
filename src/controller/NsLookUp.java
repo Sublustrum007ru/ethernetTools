@@ -6,9 +6,13 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
 public class NsLookUp{
-    private final MainController mainController = new MainController();
-    public NsLookUp(String addres) throws IOException {
-        Process nsLookUp = Runtime.getRuntime().exec("nslookup " + addres);
+    private MainController mainController;
+
+    public void setMainController(MainController mainController){
+        this.mainController = mainController;
+    }
+    public void startNsLookUp(String targetAddres) throws IOException {
+        Process nsLookUp = Runtime.getRuntime().exec("nslookup " + targetAddres);
         BufferedReader br = new BufferedReader(new InputStreamReader(nsLookUp.getInputStream(), Charset.forName("CP866")));
         String line;
         while ((line = br.readLine()) != null) {

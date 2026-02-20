@@ -8,6 +8,7 @@ public class MainController implements MainView {
 
     private MainGUI mainGUI;
     private MyPing myPing;
+    private NsLookUp nsLookUp;
 
     public void setMainGUI(MainGUI mainGUI) {
         this.mainGUI = mainGUI;
@@ -17,12 +18,34 @@ public class MainController implements MainView {
         this.myPing = myPing;
     }
 
+    public void setNsLookUp(NsLookUp nsLookUp) {
+        this.nsLookUp = nsLookUp;
+    }
+
     public void clickBTNPing() throws IOException {
-        myPing.stratPing();
+        if (checkInputAddres()) {
+            showMessage("Поле ввода адреса не может быть пустым!!!\nВведите адрес");
+            return;
+        }
+        mainGUI.clearArea();
+        myPing.stratPing(mainGUI.getAddres());
+
     }
 
     public void clickBTNNsLookUp() throws IOException {
-        showMessage("Click button NsLookUp");
+        if (checkInputAddres()) {
+            showMessage("Поле ввода адреса не может быть пустым!!!\nВведите адрес");
+            return;
+        }
+        mainGUI.clearArea();
+        nsLookUp.startNsLookUp(mainGUI.getAddres());
+    }
+
+    private boolean checkInputAddres() {
+        if (mainGUI.getAddres().isEmpty()) {
+            return true;
+        }
+        return false;
     }
 
 

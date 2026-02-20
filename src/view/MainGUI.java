@@ -14,7 +14,8 @@ public class MainGUI extends JFrame {
     private final int WIDTH = 700;
     private final int HEIGHT = 500;
     private static Font font = new Font("Times New Roman", Font.BOLD, 14);
-    private JPanel headerPanel, centerPanel, footerPanel;
+    private JPanel headerPanel, addresPanel, btnHeadPanel, centerPanel, footerPanel;
+    private JTextField sourceAddres;
     private JTextArea log;
     private MainController mainController;
 
@@ -28,6 +29,10 @@ public class MainGUI extends JFrame {
 
 
         setVisible(true);
+    }
+
+    public String getAddres() {
+        return sourceAddres.getText();
     }
 
     private void settings() {
@@ -46,10 +51,33 @@ public class MainGUI extends JFrame {
 
     private Component createHeaderPanel() {
         String name = "Hedaer Panel";
-        headerPanel = new JPanel();
+        headerPanel = new JPanel(new BorderLayout());
         headerPanel.setFont(font);
         headerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         headerPanel.setBorder(setTitleBorder(name));
+        headerPanel.add(CreateAddresHeaderPanel(), BorderLayout.NORTH);
+        headerPanel.add(CreateButtonHeaderPanel(), BorderLayout.SOUTH);
+        return headerPanel;
+    }
+
+    private Component CreateAddresHeaderPanel() {
+        String name = "Source addres:";
+        addresPanel = new JPanel();
+        addresPanel.setFont(font);
+        addresPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        addresPanel.setBorder(setTitleBorder(name));
+        int lenght = (HEIGHT / 7) - 6;
+        sourceAddres = new JTextField(lenght);
+        addresPanel.add(sourceAddres);
+        return addresPanel;
+    }
+
+    private Component CreateButtonHeaderPanel() {
+        String name = "Buttons";
+        btnHeadPanel = new JPanel();
+        btnHeadPanel.setFont(font);
+        btnHeadPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        btnHeadPanel.setBorder(setTitleBorder(name));
         JButton btnPing = new JButton("Ping");
         btnPing.addActionListener(new ActionListener() {
             @Override
@@ -72,9 +100,9 @@ public class MainGUI extends JFrame {
                 }
             }
         });
-        headerPanel.add(btnPing);
-        headerPanel.add(btnLookUp);
-        return headerPanel;
+        btnHeadPanel.add(btnPing);
+        btnHeadPanel.add(btnLookUp);
+        return btnHeadPanel;
     }
 
     private Component createCenterPanel() {
@@ -91,7 +119,7 @@ public class MainGUI extends JFrame {
         return sp;
     }
 
-    private Component createFooterPanel(){
+    private Component createFooterPanel() {
         String name = "Footer";
         footerPanel = new JPanel();
         footerPanel.setFont(font);
@@ -122,18 +150,16 @@ public class MainGUI extends JFrame {
          * TitleBorder.TOP - Выравнивание по вертикали
          * font- Шрифт. В данном примере задан в самом начале.
          */
-        TitledBorder titledBorder = BorderFactory.createTitledBorder(
-                baseBorder,
-                name,
-                TitledBorder.CENTER,
-                TitledBorder.TOP,
-                font
-        );
+        TitledBorder titledBorder = BorderFactory.createTitledBorder(baseBorder, name, TitledBorder.CENTER, TitledBorder.TOP, font);
         return titledBorder;
     }
 
     public void closeMainGUI() {
         System.exit(0);
+    }
+
+    public void clearArea(){
+        log.setText("");
     }
 }
 

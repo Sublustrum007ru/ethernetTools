@@ -3,6 +3,7 @@ package view;
 
 import controller.MainController;
 import controller.MyPing;
+import controller.NsLookUp;
 
 import java.io.IOException;
 
@@ -16,7 +17,9 @@ public class Application {
         MyPing myPing = new MyPing();
         myPing.setMainController(mainController);
         mainController.setMyPing(myPing);
-
+        NsLookUp nsLookUp = new NsLookUp();
+        nsLookUp.setMainController(mainController);
+        mainController.setNsLookUp(nsLookUp);
 
         String helloMSG = "Hello World!!!\nMy name is Sublustrum007\n";
         mainController.showMessage(helloMSG);
