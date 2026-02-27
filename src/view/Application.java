@@ -1,6 +1,7 @@
 package view;
 
 
+import controller.DeviceList;
 import controller.MainController;
 import controller.MyPing;
 import controller.NsLookUp;
@@ -17,9 +18,14 @@ public class Application {
         MyPing myPing = new MyPing();
         myPing.setMainController(mainController);
         mainController.setMyPing(myPing);
+
         NsLookUp nsLookUp = new NsLookUp();
         nsLookUp.setMainController(mainController);
         mainController.setNsLookUp(nsLookUp);
+
+        DeviceList deviceList = new DeviceList();
+        deviceList.setMainContorller(mainController);
+        mainController.setDeviceList(deviceList);
 
         String helloMSG = "Hello World!!!\nMy name is Sublustrum007\n";
         mainController.showMessage(helloMSG);

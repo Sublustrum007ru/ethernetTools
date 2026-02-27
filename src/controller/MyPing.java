@@ -13,7 +13,6 @@ public class MyPing {
     private MainGUI mainGUI;
     private MainController mainController;
     private int COUNT;
-    private int DEFAULT_COUNT = 10;
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;

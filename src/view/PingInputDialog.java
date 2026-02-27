@@ -11,8 +11,15 @@ public class PingInputDialog extends JDialog {
     public PingInputDialog(Frame owner) {
         super(owner, "Packages", true); // true = модальный режим
         setLayout(new FlowLayout());
-
-        textField = new JTextField(10);
+        JPanel labels = new JPanel();
+        labels.setLayout(new BorderLayout());
+        JLabel label1 = new JLabel("Введите необходимое");
+        JLabel label2 = new JLabel("колличество пакетов");
+        labels.add(label1, BorderLayout.NORTH);
+        labels.add(label2, BorderLayout.SOUTH);
+        setLayout(new FlowLayout());
+        add(labels);
+        textField = new JTextField(5);
         add(textField);
 
         JButton okButton = new JButton("OK");
