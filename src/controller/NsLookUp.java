@@ -13,7 +13,12 @@ public class NsLookUp{
     }
     public void startNsLookUp(String targetAddres) throws IOException {
         Process nsLookUp = Runtime.getRuntime().exec("nslookup " + targetAddres);
-        BufferedReader br = new BufferedReader(new InputStreamReader(nsLookUp.getInputStream(), Charset.forName("CP866")));
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader(
+                        nsLookUp.getInputStream(),
+                        Charset.forName("CP1251")  // CP1251 - English CP886 - Russian
+                )
+        );
         String line;
         while ((line = br.readLine()) != null) {
             showMessage(line);

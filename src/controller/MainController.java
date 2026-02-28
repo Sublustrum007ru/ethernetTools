@@ -9,6 +9,7 @@ public class MainController implements MainView {
     private MainGUI mainGUI;
     private MyPing myPing;
     private NsLookUp nsLookUp;
+    private DeviceList deviceList;
 
     public void setMainGUI(MainGUI mainGUI) {
         this.mainGUI = mainGUI;
@@ -20,6 +21,10 @@ public class MainController implements MainView {
 
     public void setNsLookUp(NsLookUp nsLookUp) {
         this.nsLookUp = nsLookUp;
+    }
+
+    public void setDeviceList(DeviceList deviceList){
+        this.deviceList = deviceList;
     }
 
     public void clickBTNPing() throws IOException {
@@ -39,6 +44,11 @@ public class MainController implements MainView {
         }
         mainGUI.clearArea();
         nsLookUp.startNsLookUp(mainGUI.getAddres());
+    }
+
+    public void clickBTNDeviceList() throws IOException{
+        mainGUI.clearArea();
+        deviceList.searchDevice();
     }
 
     private boolean checkInputAddres() {
