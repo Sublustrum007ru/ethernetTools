@@ -100,7 +100,7 @@ public class MainGUI extends JFrame {
                 }
             }
         });
-        JButton btnDeviceList = new JButton("Ethernet Device");
+        JButton btnDeviceList = new JButton("Device Networks");
         btnDeviceList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
