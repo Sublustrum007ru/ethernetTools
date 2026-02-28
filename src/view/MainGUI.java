@@ -66,7 +66,7 @@ public class MainGUI extends JFrame {
         addresPanel.setFont(font);
         addresPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         addresPanel.setBorder(setTitleBorder(name));
-        int lenght = (HEIGHT / 7) - 6;
+        int lenght = (HEIGHT / 7) - 12;
         sourceAddres = new JTextField(lenght);
         addresPanel.add(sourceAddres);
         return addresPanel;
